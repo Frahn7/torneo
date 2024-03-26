@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 import img from "../../../public/campeon.jpg";
 
-export default function Campeon() {
+function Campeon() {
   const searchParams = useSearchParams();
 
   const search = searchParams.get("campeon");
@@ -16,5 +16,13 @@ export default function Campeon() {
         <Image alt="/" src={img} width={500} height={500} />
       </div>
     </div>
+  );
+}
+
+export default function CampeonPage() {
+  return (
+    <Suspense>
+      <Campeon />
+    </Suspense>
   );
 }

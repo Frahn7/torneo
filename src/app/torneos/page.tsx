@@ -2,9 +2,9 @@
 
 import { useSearchParams } from "next/navigation";
 import { CardJugadores } from "../components/CardJugadores";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
-export default function Torneo() {
+function Torneo() {
   const searchParams = useSearchParams();
   const search = searchParams.get("jugadores");
 
@@ -116,5 +116,13 @@ export default function Torneo() {
         </button>
       )}
     </div>
+  );
+}
+
+export default function TorneosPage() {
+  return (
+    <Suspense>
+      <Torneo />
+    </Suspense>
   );
 }
