@@ -4,7 +4,6 @@ import { useState } from "react";
 
 export const Seleccion = () => {
   const [Ajugdores, setAjugdores] = useState<string[]>([]);
-  const [NumeroTotal, setNumeroTotal] = useState(0);
   const [Error, setError] = useState("");
 
   const AddJugador = (e: any) => {
@@ -13,7 +12,6 @@ export const Seleccion = () => {
     const nuevoArrayJugadores = [...Ajugdores, nombreJugador];
     setAjugdores(nuevoArrayJugadores);
     e.target.elements[0].value = "";
-    setNumeroTotal((prevNumeroTotal) => prevNumeroTotal + 1);
   };
 
   const irTorneo = () => {
@@ -59,9 +57,11 @@ export const Seleccion = () => {
           Crear torneo
         </button>
       </div>
-      <div className="flex flex-col">
-        Haz añadido a {NumeroTotal} jugadores
-        <p>{Error}</p>
+      <div className="flex flex-col text-xl m-auto">
+        {Ajugdores.length > 0
+          ? `Haz añadido a: ${Ajugdores.map((jugador) => jugador + "")} `
+          : ""}
+        <p>{Error ? Error : ""}</p>
       </div>
     </div>
   );

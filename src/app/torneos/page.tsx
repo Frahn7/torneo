@@ -56,6 +56,12 @@ function Torneo() {
     window.location.href = `campeon?campeon=${CAMPEON}`;
   };
 
+  const CampeonPorArray = (c: any) => {
+    window.location.href = `campeon?campeon=${c}`;
+  };
+
+  console.log(GanadoresArray);
+
   return (
     <div>
       <div className="flex justify-center py-10">
@@ -63,7 +69,27 @@ function Torneo() {
       </div>
       <div className="mt-10 flex flex-row gap-10 pb-5 ">
         {jugadoresArray.map((jugador, i) => (
-          <CardJugadores key={i} Nombre={jugador} className="w-full " />
+          <CardJugadores
+            onclick={() => {
+              if (!GanadoresArray.includes(jugador)) {
+                const nuevoArrayGanadores = [...GanadoresArray, jugador];
+                setGanadoresArray(nuevoArrayGanadores);
+              }
+              if (GanadoresArray.includes(jugador)) {
+                const arrayConGanadorEliminado = GanadoresArray.filter(
+                  (elemento) => elemento !== jugador
+                );
+                setGanadoresArray(arrayConGanadorEliminado);
+              }
+            }}
+            key={i}
+            Nombre={jugador}
+            className={
+              GanadoresArray.includes(jugador)
+                ? "w-full border border-red-600"
+                : "w-full"
+            }
+          />
         ))}
       </div>
 
@@ -102,6 +128,11 @@ function Torneo() {
           <button
             type="submit"
             className="text-white  -mt-[8px] justify-center flex bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 w-full focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            onClick={() => {
+              GanadoresArray.length === 1
+                ? CampeonPorArray(GanadoresArray[0])
+                : null;
+            }}
           >
             AÑADIR CAMPEON
           </button>
