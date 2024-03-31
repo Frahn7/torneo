@@ -17,8 +17,7 @@ export const Seleccion = () => {
   const irTorneo = () => {
     if (Ajugdores.length >= 4) {
       window.location.href = `torneos?jugadores=${Ajugdores}`;
-    }
-    setError("Minimo 4 jugadores");
+    } else setError("Minimo 4 jugadores");
   };
 
   return (
@@ -59,7 +58,7 @@ export const Seleccion = () => {
       </div>
       <div className="flex flex-col text-xl m-auto">
         {Ajugdores.length > 0
-          ? `Haz añadido a: ${Ajugdores.map((jugador) => jugador + "")} `
+          ? `Jugadores: ${Ajugdores.map((jugador) => jugador + "")} `
           : ""}
         <p>{Error ? Error : ""}</p>
       </div>
