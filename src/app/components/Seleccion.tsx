@@ -22,7 +22,6 @@ export const Seleccion = () => {
 
   return (
     <div className="flex flex-col justify-center gap-5">
-      <div className="text-xl text-center py-4">Selecciona los jugadores</div>
       <form
         className="flex justify-center flex-col"
         onSubmit={(e) => {
@@ -56,11 +55,13 @@ export const Seleccion = () => {
           Crear torneo
         </button>
       </div>
-      <div className="flex flex-col text-xl m-auto">
+      <div className="flex flex-col text-xl m-auto font-serif">
         {Ajugdores.length > 0
-          ? `Jugadores: ${Ajugdores.map((jugador) => jugador + "")} `
+          ? `Jugadores: ${Ajugdores.map((jugador) => " " + jugador)} `
           : ""}
-        <p>{Error ? Error : ""}</p>
+      </div>
+      <div className="flex flex-col text-xl m-auto font-serif">
+        {Error ? Error : ""}
       </div>
     </div>
   );

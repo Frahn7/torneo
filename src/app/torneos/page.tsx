@@ -23,6 +23,7 @@ function Torneo() {
   useEffect(() => {
     if (jugadoresArray.length === 2) {
       setTitulo("FINAL");
+      setFinal("FINAL");
     } else if (jugadoresArray.length === 4) {
       setTitulo("SEMIFINAL");
     } else if (jugadoresArray.length === 8) {
@@ -32,18 +33,12 @@ function Torneo() {
     }
   }, [jugadoresArray]);
 
-  useEffect(() => {
-    if (jugadoresArray.length === 2) {
-      setFinal("FINAL");
-    }
-  }, [jugadoresArray]);
-
   const Continuar = () => {
     if (GanadoresArray.length === jugadoresArray.length / 2) {
       setJugadoresArray(GanadoresArray);
       setGanadoresArray([]);
       setError("");
-    } else setError("Tienes que seleccionar correctamente los ganadores");
+    } else setError("Selecciona correctamente los ganadores");
   };
 
   const CampeonPorArray = (c: any) => {
@@ -53,7 +48,7 @@ function Torneo() {
   return (
     <div>
       <div className="flex justify-center py-10">
-        <h1 className="text-4xl">{Titulo}</h1>
+        <h1 className="text-4xl font-serif">{Titulo}</h1>
       </div>
 
       <div className="mt-10 flex flex-row flex-wrap gap-10  justify-center pb-5">
@@ -97,7 +92,7 @@ function Torneo() {
               : null;
           }}
         >
-          AÑADIR CAMPEON
+          CAMPEON
         </button>
       ) : (
         <button
@@ -108,7 +103,9 @@ function Torneo() {
           Continuar
         </button>
       )}
-      {Error}
+      <div className="flex flex-col text-xl text-center font-serif">
+        {Error}
+      </div>
     </div>
   );
 }

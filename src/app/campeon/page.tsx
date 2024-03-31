@@ -9,7 +9,7 @@ function Campeon() {
 
   const search = searchParams.get("campeon");
   return (
-    <div className="text-4xl flex justify-center flex-col gap-5">
+    <div className="text-4xl flex justify-center flex-col gap-5 font-serif">
       <p className="flex justify-center">CAMPEON DEL TORNEO</p>
       <p className="uppercase flex justify-center">{search}</p>
       <div className="flex justify-center">
