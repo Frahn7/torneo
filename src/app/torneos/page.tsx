@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { CardJugadores } from "../components/CardJugadores";
-import { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
 function Torneo() {
   const searchParams = useSearchParams();
@@ -53,7 +53,7 @@ function Torneo() {
 
       <div className="mt-10 flex flex-row flex-wrap gap-10  justify-center pb-5">
         {jugadoresArray.map((jugador, i) => (
-          <>
+          <React.Fragment key={i}>
             <CardJugadores
               onclick={() => {
                 if (!GanadoresArray.includes(jugador)) {
@@ -75,10 +75,8 @@ function Torneo() {
                   : ""
               }
             />
-            {i % 2 === 1 && i !== jugadoresArray.length - 1 && (
-              <div className="w-4" />
-            )}
-          </>
+            {i % 2 === 1 && <div className="w-5" />}
+          </React.Fragment>
         ))}
       </div>
 
