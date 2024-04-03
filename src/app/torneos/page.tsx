@@ -11,7 +11,6 @@ function Torneo() {
   const [jugadoresArray, setJugadoresArray] = useState<string[]>([]);
   const [GanadoresArray, setGanadoresArray] = useState<string[]>([]);
   const [Titulo, setTitulo] = useState("");
-  const [FINAL, setFinal] = useState("");
   const [Error, setError] = useState("");
 
   useEffect(() => {
@@ -23,7 +22,6 @@ function Torneo() {
   useEffect(() => {
     if (jugadoresArray.length === 2) {
       setTitulo("FINAL");
-      setFinal("FINAL");
     } else if (jugadoresArray.length === 4) {
       setTitulo("SEMIFINAL");
     } else if (jugadoresArray.length === 8) {
@@ -80,7 +78,7 @@ function Torneo() {
         ))}
       </div>
 
-      {FINAL === "FINAL" ? (
+      {Titulo === "FINAL" ? (
         <button
           type="submit"
           className="text-white  -mt-[8px] justify-center flex bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 w-full focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
