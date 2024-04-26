@@ -3,10 +3,12 @@
 import { useSearchParams } from "next/navigation";
 import { CardJugadores } from "../components/CardJugadores";
 import React, { Suspense, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 function Torneo() {
   const searchParams = useSearchParams();
   const search = searchParams.get("jugadores");
+  const Router = useRouter();
 
   const [jugadoresArray, setJugadoresArray] = useState<string[]>([]);
   const [GanadoresArray, setGanadoresArray] = useState<string[]>([]);
@@ -40,7 +42,7 @@ function Torneo() {
   };
 
   const CampeonPorArray = (c: any) => {
-    window.location.href = `campeon?campeon=${c}`;
+    Router.push(`/campeon?campeon=${c}`);
   };
 
   return (

@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export const Seleccion = () => {
   const [Ajugdores, setAjugdores] = useState<string[]>([]);
   const [Error, setError] = useState("");
+  const Router = useRouter();
 
   const AddJugador = (e: any) => {
     e.preventDefault();
@@ -16,7 +18,7 @@ export const Seleccion = () => {
 
   const irTorneo = () => {
     if (Ajugdores.length >= 4) {
-      window.location.href = `torneos?jugadores=${Ajugdores}`;
+      Router.push(`torneos?jugadores=${Ajugdores}`);
     } else setError("Minimo 4 jugadores");
   };
 
